@@ -1,0 +1,58 @@
+
+#include <iostream>
+using namespace std;
+
+int tree[10];
+
+void root(int key)
+{
+    if(tree[0] != 0)
+        cout << "Tree already has a root";
+    else
+        tree[0] = key;
+}
+
+void left_child(int key, int parent)
+{
+    int index = 2 * parent + 1;
+
+    if(tree[parent] == 0)
+        cout << "Parent does not exist\n";
+    else
+        tree[index] = key;
+}
+
+void right_child(int key, int parent)
+{
+    int index = 2 * parent + 2;
+
+    if(tree[parent] == 0)
+        cout << "Parent does not exist\n";
+    else
+        tree[index] = key;
+}
+
+void display()
+{
+    cout << "Binary Tree Elements:\n";
+    for(int i = 0; i < 10; i++)
+    {
+        if(tree[i] != 0)
+            cout << tree[i] << " ";
+        else
+            cout << "- ";
+    }
+}
+
+int main()
+{
+    root(10);
+    left_child(5, 0);
+    right_child(15, 0);
+    left_child(3, 1);
+    right_child(7, 1);
+
+    display();
+
+    return 0;
+}
